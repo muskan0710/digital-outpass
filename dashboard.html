@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>DETAILS</title>
+   </head>  
+   <body>
+   	  <table>
+   	  	<tr>
+   	  		<td><h1>STUDENT'S DETAILS</h1></td>
+   	  	</tr>
+   	  	<tr>
+   	  		<th>FIRST NAME</th>
+   	  		<th>LAST NAME</th>
+   	  		<th>REGISTERATION NUMBER</th>
+   	  		<th>EMAIL ADDRESS</th>
+   	  		<th>BLOCK NUMBER</th>
+   	  		<th>ROOM NUMBER</th>
+   	  		<th>DATE OF LEAVE</th>
+   	  		<th>DATE OF RETURN</th>
+   	  		<th>PHONE NUMBER</th>
+   	  		<th>PAREN'S PHONE NUMBER</th>
+   	  		<th>REASON</th>
+   	  		<th>LEAVE ADDRESS</th>
+   	  	</tr>
+   	  	<?php
+   	  	$conn = mysqli_connect("localhost","root","","info");
+   	  	if($conn-> connect_error){
+   	  	  die("connection failed:".$conn-> connect_error);
+   	     }	 
+
+   	     $sql = "SELECT firstname, lastname, regno, email, blockno, roomno, dol, dor, phnno, parentno, reason, leaveaddr from info";
+   	     $result = $conn-> query($sql);
+
+   	     if($result-> num_rows > 0){
+   	       while($row = $ result-> fetch_assoc()) {
+   	       echo"<tr><td>".$row["firstname"]."</td><td>".$row["lastname"]."</td><td>".$row["regno"]."</td><td>".$row["email"]."</td><td>".$row["blockno"]."</td><td>".$row["roomno"]."</td><td>".$row["dol"]."</td><td>".$row["dor"]."</td><td>".$row["phnno"]."</td><td>".$row["parentno"]."</td><td>".$row["reason"]."</td><td>".$row["leaveaddr"]."</td></tr>";
+
+   	   }
+   	echo "</table>";
+   	 }
+   	 else{
+   	  echo "0 result";
+   	}
+
+   	  $conn-> close();
+        ?>
+   	  	</tr>
+   	  </table>
+   	</body>
+</html>   	
+   	  		 
